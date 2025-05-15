@@ -24,8 +24,11 @@ class CategoryAdmin(admin.ModelAdmin):
 class SubCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'image_tag')
     prepopulated_fields = {'slug': ('name',)}
+    list_filter = ('category',)
     search_fields = ('name', 'slug')
+
     ordering = ('name',)
+    autocomplete_fields = ('category',)
 
     def image_tag(self, obj):
         if obj.image:
