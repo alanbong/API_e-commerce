@@ -6,6 +6,9 @@ from .serializers import CategorySerializer
 
 
 class CategoryViewSet(ReadOnlyModelViewSet):
+    """
+    Представление для модели Category.
+    """
     queryset = Category.objects.prefetch_related('subcategories').all()
     serializer_class = CategorySerializer
     permission_classes = (AllowAny,)
