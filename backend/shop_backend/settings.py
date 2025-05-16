@@ -50,8 +50,10 @@ INSTALLED_APPS = [
     # Генерация изображений
     'imagekit',
 
+    # Приложения
     'categories.apps.CategoriesConfig',
-    'products.apps.ProductsConfig'
+    'products.apps.ProductsConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
