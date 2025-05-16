@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'versatileimagefield',
 
     'categories.apps.CategoriesConfig',
-    'products.apps.ProductsConfig'
+    # 'products.apps.ProductsConfig'
 ]
 
 MIDDLEWARE = [
