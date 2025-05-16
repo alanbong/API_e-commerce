@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'versatileimagefield',
 
     'categories.apps.CategoriesConfig',
+    'products.apps.ProductsConfig'
 ]
 
 MIDDLEWARE = [
@@ -140,4 +142,8 @@ REST_FRAMEWORK = {
         'rest_framework.pagination.PageNumberPagination',
     ),
     'PAGE_SIZE': 10,
+}
+
+VERSATILEIMAGEFIELD_SETTINGS = {
+    'create_images_on_demand': True,
 }
