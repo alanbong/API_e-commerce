@@ -142,7 +142,3 @@ REST_FRAMEWORK = {
     ),
     'PAGE_SIZE': 10,
 }
-
-VERSATILEIMAGEFIELD_SETTINGS = {
-    'create_images_on_demand': True,
-}
