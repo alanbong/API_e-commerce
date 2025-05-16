@@ -6,23 +6,35 @@ from .models import Category, SubCategory
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'image_tag')
+    """
+    Админка для модели Category.
+    Автозаполнение slug.
+    """
+    list_display = ('name', 'slug', 'image_preview')
     prepopulated_fields = {'slug': ('name',)}
     search_fields = ('name', 'slug')
     ordering = ('name',)
 
-    def image_tag(self, obj):
+    @admin.display(description='Превью')
+    def image_preview(self, obj):
+        """
+        Отображает уменьшенное изображение категории в админке.
+        """
         if obj.image:
             return mark_safe(
                 f'<img src="{obj.image.url}" style="height: 40px;" />'
             )
-        return '-'
-    image_tag.short_description = 'Превью'
+        return 'Нет изображения'
+    image_preview.short_description = 'Превью'
 
 
 @admin.register(SubCategory)
 class SubCategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'image_tag')
+    """
+    Админка для модели SubCategory.
+    Автозаполнение slug, фильтр по категории.
+    """
+    list_display = ('name', 'slug', 'image_preview')
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ('category',)
     search_fields = ('name', 'slug')
@@ -30,10 +42,13 @@ class SubCategoryAdmin(admin.ModelAdmin):
     ordering = ('name',)
     autocomplete_fields = ('category',)
 
-    def image_tag(self, obj):
+    @admin.display(description='Превью')
+    def image_preview(self, obj):
+        """
+        Отображает уменьшенное изображение подкатегории в админке.
+        """
         if obj.image:
             return mark_safe(
                 f'<img src="{obj.image.url}" style="height: 40px;" />'
             )
-        return '-'
-    image_tag.short_description = 'Превью'
+        return 'Нет изображения'
