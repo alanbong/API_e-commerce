@@ -13,9 +13,9 @@ from .constants import (
 
 
 class Product(models.Model):
-    '''
+    """
     Модель для продуктов
-    '''
+    """
     name = models.CharField(
         max_length=PRODUCT_NAME_MAX_LENGTH,
         unique=True,
@@ -81,10 +81,10 @@ class Product(models.Model):
         verbose_name_plural = 'Продукты'
 
     def save(self, *args, **kwargs):
-        '''
+        """
         Переопределяем метод save, чтобы автоматически
         устанавливать категорию на основе выбранной подкатегории subcategory.
-        '''
+        """
         if self.subcategory:
             self.category = self.subcategory.category
         super().save(*args, **kwargs)
