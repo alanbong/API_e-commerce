@@ -38,6 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Django REST Framework
+    'rest_framework',
+
+    # Авторизация по токену
+    'rest_framework.authtoken',
+
+    # Swagger (документация)
+    'drf_yasg',
+
+    # Генерация изображений
+    'imagekit',
+
     'categories.apps.CategoriesConfig',
     'products.apps.ProductsConfig'
 ]
