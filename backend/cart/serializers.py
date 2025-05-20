@@ -6,6 +6,9 @@ from .models import Cart, CartItem
 
 
 class CartItemSerializer(serializers.ModelSerializer):
+    '''
+    Вложенный сериалзиатор для CartSerializer.
+    '''
     product = ProductSerializer(read_only=True)
     total_price = serializers.SerializerMethodField()
 
@@ -18,9 +21,9 @@ class CartItemSerializer(serializers.ModelSerializer):
 
 
 class CartSerializer(serializers.ModelSerializer):
-    """
+    '''
     Сериализатор корзины с подсчётом общей суммы и количества.
-    """
+    '''
     items = CartItemSerializer(many=True, read_only=True)
     total_price = serializers.SerializerMethodField()
 
@@ -33,9 +36,10 @@ class CartSerializer(serializers.ModelSerializer):
 
 
 class CartItemActionSerializer(serializers.Serializer):
-    """
-    Сериализатор для операций добавления/изменения/удаления товара.
-    """
+    '''
+    Сериализатор товаров в коризине для операций:
+    добавления/изменения/удаления товара.
+    '''
     product_id = serializers.PrimaryKeyRelatedField(
         queryset=Product.objects.all(),
         source='product',
