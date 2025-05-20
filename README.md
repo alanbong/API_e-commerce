@@ -32,7 +32,7 @@ REST API для интернет-магазина продуктов питан�
     │── .env
     ```
 
-2. Пример `.env.example`::
+2. Пример `.env.example`:
     ```
     SECRET_KEY=django-insecure-key
     DEBUG=True
