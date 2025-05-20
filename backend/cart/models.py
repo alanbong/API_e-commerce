@@ -4,6 +4,8 @@ from django.db import models
 
 
 from products.models import Product
+from .constants import MAX_PRODUCT_QUANTITY_VALUE
+
 
 User = get_user_model()
 
@@ -54,7 +56,7 @@ class CartItem(models.Model):
                 )
             ),
             MaxValueValidator(
-                9999, message=(
+                MAX_PRODUCT_QUANTITY_VALUE, message=(
                     'Максимальное количество товаров - 9999'
                 )
             )
