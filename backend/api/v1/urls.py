@@ -3,14 +3,13 @@ from django.views.static import serve
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 
-from pathlib import Path
 from shop_backend.settings import BASE_DIR
 
 from categories.views import CategoryViewSet
 from products.views import ProductViewSet
 from cart.views import CartViewSet
 
-# DOCS_DIR = Path(__file__).resolve().parent.parent.parent / 'utils'
+
 DOCS_DIR = BASE_DIR / 'utils'
 
 router = DefaultRouter()
@@ -29,6 +28,15 @@ urlpatterns = [
     ),
     path(
         'redoc/openapi-schema.yml/', serve,
+        {'path': 'openapi-schema.yml', 'document_root': DOCS_DIR},
+        name='schema-yaml'
+    ),
+    path('swagger/', serve, {
+        'path': 'swagger.html',
+        'document_root': DOCS_DIR
+    }, name='swagger-ui'),
+    path(
+        'swagger/openapi-schema.yml/', serve,
         {'path': 'openapi-schema.yml', 'document_root': DOCS_DIR},
         name='schema-yaml'
     ),
