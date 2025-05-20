@@ -3,6 +3,7 @@ from rest_framework import serializers
 from products.models import Product
 from products.serializers import ProductSerializer
 from .models import Cart, CartItem
+from .constants import MAX_PRODUCT_QUANTITY_VALUE
 
 
 class CartItemSerializer(serializers.ModelSerializer):
@@ -45,7 +46,15 @@ class CartItemActionSerializer(serializers.Serializer):
         source='product',
         write_only=True
     )
-    quantity = serializers.IntegerField(min_value=1, required=False)
+    quantity = serializers.IntegerField(
+        min_value=1,
+        max_value=MAX_PRODUCT_QUANTITY_VALUE,
+        required=False,
+        error_messages={
+            'min_value': 'Минимальное количество единиц товара - 1',
+            'max_value': 'Максимальное количество единиц товара - 9999',
+        }
+    )
 
     class Meta:
         fields = ('product_id', 'quantity')
