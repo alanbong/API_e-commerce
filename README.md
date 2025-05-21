@@ -28,6 +28,11 @@ REST API для интернет-магазина продуктов питан�
 ## Установка
 1. Клонируйте репозиторий и создайте `.env` по примеру:
     ```
+    git clone https://github.com/alanbong/API_e-commerce.git
+    cd api_e-commerce
+    ```
+
+    ```
     project/
     │── .env
     ```
@@ -40,10 +45,22 @@ REST API для интернет-магазина продуктов питан�
     ```
 
 3. Установите зависимости и запустите проект:
+    ### Linux/MacOS
+    ```
+    cd backend
+    python3 -m venv venv
+    source venv/bin/activate
+    python3 -m pip install -r requirements.txt
+
+    python3 manage.py migrate
+    python3 manage.py createsuperuser
+    python3 manage.py runserver
+    ```
+    ### Windows
     ```
     cd backend
     python -m venv venv
-    source venv/bin/activate
+    . venv/Scripts/activate
     pip install -r requirements.txt
 
     python manage.py migrate
@@ -52,6 +69,11 @@ REST API для интернет-магазина продуктов питан�
     ```
 
 4. (Опционально) Загрузите фикстуры:
+    ### Linux/MacOS
+    ```
+    python3 manage.py import_csv
+    ```
+    ### Windows
     ```
     python manage.py import_csv
     ```
@@ -90,5 +112,5 @@ POST api/v1/api-token-auth/
 
 
 ## Авторы
-Backand:
+Backend:
 - [alanbong](https://github.com/alanbong)
